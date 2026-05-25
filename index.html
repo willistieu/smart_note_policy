@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Smart Note</title>
+    <!-- GitHub Markdown CSS for styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css">
+    <!-- Marked.js for parsing markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+            background-color: #0d1117; /* GitHub dark mode background */
+            color: #c9d1d9;
+        }
+        @media (max-width: 767px) {
+            body {
+                padding: 15px;
+            }
+        }
+        /* Custom styles to match the dark theme */
+        .markdown-body {
+            color-scheme: dark;
+            --color-canvas-default: #0d1117;
+            --color-fg-default: #c9d1d9;
+            --color-border-default: #30363d;
+            --color-border-muted: #21262d;
+            --color-neutral-muted: rgba(110,118,129,0.4);
+            --color-accent-fg: #58a6ff;
+            --color-accent-emphasis: #1f6feb;
+            --color-attention-subtle: rgba(187,128,9,0.15);
+            --color-danger-fg: #f85149;
+        }
+    </style>
+</head>
+<body class="markdown-body">
+    <div id="content">Loading Privacy Policy...</div>
+
+    <script>
+        // Fetch and render the markdown file
+        fetch('PRIVACY.md')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to load markdown file');
+                }
+                return response.text();
+            })
+            .then(text => {
+                document.getElementById('content').innerHTML = marked.parse(text);
+            })
+            .catch(error => {
+                document.getElementById('content').innerHTML = '<p>Error loading privacy policy. Please try again later.</p>';
+                console.error('Error fetching the markdown file:', error);
+            });
+    </script>
+</body>
+</html>
